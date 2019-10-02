@@ -1,0 +1,207 @@
+#########
+# Step 1
+Code affected: none
+Created this file.
+
+#########
+# Step 2
+Code affected: all .java files
+Reformatted using the Google Java style formatter.
+
+#########
+# Step 3
+Code affected: Fish.turnAround
+Flaw: unnecessary if, leading to duplicate code.
+Fix: replaced if statement with a single assignment statement.
+
+#########
+# Step 4
+Code affected: class Fish
+Flaw: vague instance variables
+Fix: renamed fish's first coordinate, and fish's second coordinate.  added private to each instance variable. added comment for paintText.
+
+#########
+# Step 5
+Code affected: Fish.setLocation
+Flaw: vague method parameters
+Fix: renamed fish's new first coordinate, and fish's new second coordinate.
+
+#########
+# Step 6
+Code affected: Fish.reverseAppearance
+Flaw: lengthy switch statement
+Fix: replaced switch statement using hashmap containing reversed characters.
+
+#########
+# Step 7
+Code affected: class Fish, fish.setLocation
+Flaw: vague instance variables, paramenters
+Fix: updated names to show x/y direction
+
+#########
+# Step 8
+Code affected: FishTankManager, fish.draw, fish. drawString, fish.move
+Flaw: fish moving out of screen
+Fix: Assign correct parameters in fish.drawString and fish.draw.  Additional conditional for turnaround at edge of screen, and for moving up and down when at top or bottom of screen in fish.move.  Changed gridWidth/gridHeight and their getters to static for access in FishTankManager.java.
+
+#########
+# Step 9
+Code affected: class Seaweed
+Flaw: vague instance variables
+Fix: renamed variables to be more descriptive.
+
+#########
+# Step 10
+Code affected: class Seaweed, FishTankItem
+Flaw: repeated code
+Fix: created a new superclass FishTankItem, with common instance variables and methods for setLocation, drawString, abstract draw, getters/setters.  Updated Seaweed to extend FishTankItem.
+
+#########
+# Step 11
+Code affected: class Fish
+Flaw: repeated code
+Fix: updated to inherit from FishTankItem. Inherit setLocation, drawString, and update instance variables to use getters/setters.
+
+#########
+# Step 12
+Code affected: class HungryFish, Fish.reverseAppearance, Fish constructor
+Flaw: repeated code
+Fix: updated Fish and HungryFish to allow HungryFish to inherit all instance variables and methods inherit from Fish.  Updated Fish to become inheritable, with a constructor for custom appearances, update reverseAppearance to accommodate.
+
+#########
+# Step 13
+Code affected: Seaweed.draw
+Flaw: ugly and repeated code, causing missing seaweed segment
+Fix: reduced series of if statements to single if/else to make readable and fix functionality.
+
+#########
+# Step 14
+Code affected: FishTankManager methods .draw, .update, and .createTankItems.   All constructors for FishTankItem, Seaweed, Fish, and HungryFish.
+Flaw: iterating over mostly empty 2D array
+Fix: Added new instance variable fishTankItems using List to store all FishTankItem.  Updated FishTankItem and subclasses to accept coordX, coordY in constructor to simplify spawn location for addition into fishTankItems list.
+
+#########
+# Step 15
+Code affected: FishTankManager.  All constructors for FishTankItem, Bubble, Seaweed, Fish, and HungryFish.  Bubble movement methods.
+Flaw: Bubble has duplicate code
+Fix: Updated FishTankItem with instance variable appearance from subclass.  Added getters/setters.  Updated FishTankItem subclasses to move appearance to super.  Change constructor to set initial appearance.
+
+#########
+# Step 16
+Code Affected: FishTankManager.update
+Flaw: Bubble floats past top
+Fix: added a toDelete loop in FishTankManager.update to catch and delete any bubbles at the top of the tank.
+
+#########
+# Step 17
+Code Affected: FishTankManager methods .update and .draw, Fish.blowBubble
+Flaw: Frames skipping backwards (logcat shows runtime error: java.util.ConcurrentModificationException)
+Fix: added a separate fishTankBubbles Array that bubbles are generated in, and updates after the other fishTankItems list.
+
+#########
+# Step 18
+Code Affected: Fish.blowBubble
+Flaw: bubble blows from tale when facing right
+Fix: modified the blowBubble coordX to be shifted to the head when facing right.
+
+#########
+# Step 19
+Code Affected: FishTankItem constructor, FishtankManager.createTankItems
+Flaw: generating full tank has fish off of screen.
+Fix: modified the FishTankItem constructor generateds off of screen fish at the closest point inside the tank.
+
+#########
+# Step 20
+Code Affected: FishtankManager.update
+Flaw: index out of bounds 
+Fix: modified the FishTankItem constructor generateds off of screen fish at the closest point inside the tank.
+
+#########
+# Step 21
+Code Affected: FishtankManager methods constructor, .update, .draw, fishTankBubble List, Fish.blowBubble
+Flaw: extra code
+Fix: removed the fishTankBubble List and changed .update to a while loop to prevent concurrent modification error without extra code (Step 17).
+
+#########
+# Step 22
+Code Affected: HungryFish.reverseAppearance()
+Flaw: missing Turning/Turned Around system out.
+Fix: added reverseAppearance override in HungryFish to re-instate the Turning/Turned system out message
+
+#########
+# Step 23
+Code Affected: Fish, Fish.move, Fish.moveRandom
+Flaw: messy code
+Fix: reorganized methods.  extracted random movement wihthin move into new method moveRandom.
+
+#########
+# Step 24
+Code Affected: FishTankItem, Bubble, Fish, HungryFish
+Flaw: messy, excess code
+Fix: Removed extra constructors in FishTankItem and Fish which accepted appearance.  Change all constructors to set appearance in the constructor instead.  Removed overriden reverseAppearance  in HungryFish and replaced with cleaner updateAppearance method in Fish.  Replaced the reverseAppearance with updateAppearance that does not re-calculate the reverse string.
+
+#########
+# Step 25
+Code Affected: See Step N
+
+#########
+# Step 26
+Code Affected: All Files.
+Flaw: Missing Comments
+Fix: Added and updated comments for all classes and methods.
+
+
+
+#########
+# Step N - 1
+Code Affected: FishTankManager, Bubbles. 
+Flaw: Memory Leak
+Fix: 
+Step 16-17.  Introduced a check for bubbles, and set to be destroyed if floating off screen.
+
+Step N. Introduced a new Interface Destructible for destructible items.
+Bubbles, Food, and FishPoop can be destroyed.
+
+#########
+# Step N
+
+Note: Started on Step 25
+
+Code Affected:
+	new: 
+		Destructible
+		Food
+		FishPoop
+
+	change:	
+		FishTankManager
+		FishTankItem
+		Fish
+		HungryFish
+		Bubble
+
+
+Introduced a new FishTankItem Food.
+
+The food (a worm) will disappear when eaten or if not eaten within its random lifetime.
+
+If any fish detects a food (within its foodRadius), it will swim toward it and eat the food.  The fish will become longer (stomach contents increasing) and it will continue its random course after eating the food.  It will not eat if has reached its maximum stomach capacity.  The fish will randomly poop to reduce its stomach contents and release a FishPoop item.
+
+The HungryFish has a larger radius for detecting food, and does not grow nor reach a maximum stomach capacity.  It will always eats.
+
+New: Food, FishPoop
+
+Updated: Fish with new methods to interact with Food:
+	detectFood, moveTowards, eatFood, poop, growStomach, shrinkStomach
+
+Introduced a new Interface Destructible for destructible items:
+Bubbles, Food, and FishPoop.  This allows FishTankManager to detect when such an item should be destroyed.
+
+New: Destructible Interface, Food, FishPoop
+Updated: Bubbles
+
+#########
+# Step N + 1
+Code Affected: FishTankManager, Destructible, Bubbles, Food, FishPoop
+Flaw: Code Smells - Excess Code
+Fix: Create static list of Foods in Food to check for destructible, rather than have a list of foods within FishTankManager.
