@@ -14,7 +14,7 @@ public class Food extends FishTankItem implements Destructible {
      */
     private int life;
 
-    private static List<Food> Foods;
+    public static List<Food> collector;
 
     /**
      * Constructs a new Food at the specified cursor location (x, y).
@@ -27,7 +27,7 @@ public class Food extends FishTankItem implements Destructible {
         this.setAppearance("\uD80C\uDD99");
         this.destroyItem = false;
         this.life = 20 + (int) Math.round(Math.random() * 30);
-        Foods.add(this);
+        foodsList.add(this);
     }
 
     /**
@@ -35,6 +35,7 @@ public class Food extends FishTankItem implements Destructible {
      */
     public Food() {
         this(FishTankManager.getRandomCoord()[0], FishTankManager.getRandomCoord()[1]);
+        Foods.add(this);
     }
 
     /**
@@ -97,5 +98,6 @@ public class Food extends FishTankItem implements Destructible {
     public boolean toBeDestroyed() {
         return this.destroyItem;
     }
+    
 
 }

@@ -10,6 +10,8 @@ public class FishPoop extends FishTankItem implements Destructible {
      * If this fish poop item needs to be destroyed
      */
     private Boolean destroyItem;
+    
+    public static List<FishPoop> collector;
 
     /**
      * Constructs a new fish poop at the specified cursor location (x, y).

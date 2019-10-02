@@ -18,6 +18,8 @@ public class Fish extends FishTankItem {
     private StringBuilder stomach;
     private int stomachCapacity;
     private int foodRadius;
+    
+    public static List<Fish> collector;
 
     /**
      * Constructs a new fish.
@@ -34,6 +36,7 @@ public class Fish extends FishTankItem {
         this.stomachCapacity = 4;
         this.foodRadius = 5;
         updateAppearance();
+        collector.append(this);
 
     }
 
@@ -216,8 +219,8 @@ public class Fish extends FishTankItem {
         Food closestFood = null;
         double closestDistance = 999999;
 
-        for (Food food : FishTankManager.fishTankFoods) {
-            if (!food.toBeDestroyed()) {
+        for (Food food : Food.collector) {
+            if (!food.toBeDestroyed()) { //dont need if food is destroyed first
                 double distanceFromFood = food.distanceFrom(this);
                 if (distanceFromFood <= this.foodRadius && distanceFromFood < closestDistance) {
                     closestFood = food;
