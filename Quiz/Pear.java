@@ -1,3 +1,5 @@
+package quiz;
+
 public class Pear extends Fruit {
 
     public String name = "Pear";
