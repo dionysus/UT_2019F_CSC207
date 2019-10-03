@@ -46,11 +46,23 @@ public class FishTankManager {
         for (FishTankItem food : fishTankFoods) {
             food.draw(canvas);
         }
+        
+        // FishTankItem.draw(); //update all from class
+        
     }
 
     public void update() {
         updateFishTankItems();
         updateFishFoods();
+        
+        // Food.update(); // move or destroy
+        // Fish.update(); // move
+        // Bubble.update(); // move or destroy
+        // FishPoop.update();
+        
+        // Destructibles.update();
+        
+        
     }
 
     public void createTankItems() {
@@ -82,6 +94,8 @@ public class FishTankManager {
      * Update all the foods in FishTankFoods.  Remove those marked for destroy.
      */
     private void updateFishFoods() {
+    
+    
         int j = 0;
         while (j < fishTankFoods.size()) {
             if (((Destructible) fishTankFoods.get(j)).toBeDestroyed()) {

@@ -21,6 +21,9 @@ public abstract class FishTankItem {
      * The item's appearance style.
      */
     private Paint paintText = new Paint();
+    
+    public static List<FishTankItem> collector;
+
 
     /**
      * Constructs a new fish.
@@ -46,6 +49,7 @@ public abstract class FishTankItem {
         this.appearance = "";
 
         addToFishTankManager();
+        collector.add(this);
     }
 
     /**

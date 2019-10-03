@@ -10,6 +10,8 @@ public class Bubble extends FishTankItem implements Destructible {
      * If this bubble item needs to be destroyed
      */
     private Boolean destroyItem;
+    
+    public static List<Destructible> collector;
 
     /**
      * Constructs a new bubble at the specified cursor location (x, y).
@@ -21,6 +23,7 @@ public class Bubble extends FishTankItem implements Destructible {
         super(coordX, coordY, Color.LTGRAY);
         this.setAppearance(".");
         this.destroyItem = false;
+        collector.append(this);
     }
 
     /**
@@ -77,6 +80,10 @@ public class Bubble extends FishTankItem implements Destructible {
      */
     public boolean toBeDestroyed() {
         return this.destroyItem;
+    }
+    
+    public List<Destructible> getCollector(){
+        return this.collector();
     }
 
 }
